@@ -1,0 +1,33 @@
+{
+  "name": "linkforge-cache",
+  "version": "1.0.0",
+  "description": "Local persistent, multi-process, content-sharing artifact cache with digest verification and cold-key eviction.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "linkforge-cache": "dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/cli.js dist/server.js",
+    "start": "node dist/server.js",
+    "prestart": "npm run build",
+    "cli": "node dist/cli.js",
+    "pretest": "npm run build",
+    "test": "node --test --test-reporter=spec dist/test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.11"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.0",
+    "typescript": "~5.9.3"
+  },
+  "license": "MIT"
+}
